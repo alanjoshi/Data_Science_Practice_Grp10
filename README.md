@@ -24,11 +24,11 @@ The project aims to support decision-making for first-home buyers, renters, inve
 
 The project uses approximately **15,423 property sales records** together with additional demographic and geographic information.
 
-Main data sources include:
+Data sources include:
 
-- Property sales and listing data
-- Australian Bureau of Statistics (ABS) Census data
-- ABS population data
+- Property sales and listing data (Main dataset)
+- Australian Bureau of Statistics (ABS) Census data (Supporting datasets)
+- ABS population data (Supporting datasets)
 - Google Maps Platform for geographic features such as distance from Darwin CBD
 
 ## System Workflow
