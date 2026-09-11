@@ -1,2 +1,5 @@
 .DS_Store
 .venv
+data/model_ready/*
+data/processed/*
+data/output/*
