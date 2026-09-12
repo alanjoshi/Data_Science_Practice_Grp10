@@ -1,143 +1,62 @@
-# Housing Affordability Forecasting System for Greater Darwin Region
+# PRT661 – Housing Affordability Forecasting System
 
-**PRT661 – Data Science Practice**  
-**Group:** Dan1-Theme2  
-**Theme 2:** Predictive Analytics and Forecasting
+**Assessment 2 · Group Dan1-Theme2 · Theme 2 — Predictive Analytics and Forecasting**
 
-## Project Overview
+Forecasting Darwin house prices from property sales data, combined with population, household
+income, and RBA cash rate data.
 
-This project develops a **Housing Affordability Forecasting System for the Greater Darwin Region**. The system integrates historical property sales data with demographic, socioeconomic, and geographic information to analyse housing affordability and predict property prices across Greater Darwin suburbs.
+## Project Structure
 
-The project aims to support decision-making for first-home buyers, renters, investors, real-estate organisations, and government planners.
-
-## Project Objectives
-
-- Collect property sales, demographic, socioeconomic, and geographic data.
-- Clean, integrate, and preprocess data from multiple sources.
-- Engineer relevant features such as bedrooms, property type, suburb indicators, and distance from Darwin CBD.
-- Develop and compare regression models for property price prediction.
-- Analyse factors influencing housing affordability.
-- Develop affordability indicators using property prices, household income, rents, and related factors.
-- Create an interactive dashboard presenting historical trends, predictions, affordability indicators, and key price drivers.
-
-## Data Sources
-
-The project uses approximately **15,423 property sales records** together with additional demographic and geographic information.
-
-Data sources include:
-
-- Property sales and listing data (Main dataset)
-- Australian Bureau of Statistics (ABS) Census data (Supporting datasets)
-- ABS population data (Supporting datasets)
-- Google Maps Platform for geographic features such as distance from Darwin CBD
-
-## System Workflow
-
-The project follows the workflow:
-
-**Identify Housing Price Factors → Collect Data Sources → Store Raw Data → Clean & Pre-process Data → Merge Datasets → Feature Engineering → Train ML Models → Evaluate Model Performance → Generate Predictions → Visualise Results**
-
-Data is organised into four main layers:
-
-1. **Raw Data** – Original collected or downloaded datasets
-2. **Processed Data** – Cleaned and standardised datasets
-3. **Model-Ready Data** – Integrated data with engineered features
-4. **Output Data** – Predictions, evaluation metrics, and feature importance results
-
-## Machine Learning
-
-The project evaluates three regression models:
-
-- Linear Regression
-- Random Forest
-- XGBoost
-
-Model performance will be evaluated using:
-
-- **MAE** – Mean Absolute Error
-- **RMSE** – Root Mean Squared Error
-- **R²** – Coefficient of Determination
-
-Temporal train/test separation will also be considered to reduce the risk of future data leakage.
-
-## Team Members
-
-| Team Member | Primary Role |
-|---|---|
-| Bipana Tripathee | Project Coordinator & Business Analyst |
-| Alan Joshi John | Data Engineer |
-| Roshan Neupane | System Architect & Machine Learning Developer |
-| Lisa Vong | Project Planning & Documentation Coordinator |
-| Aashish Sharma | Risk, Ethics & Visualisation Specialist |
-
-## Project Management
-
-The team uses:
-
-- **Jira** – Task allocation, sprint planning, milestones, and progress tracking
-- **GitHub** – Version control, documentation, code, datasets, and project evidence
-- **Microsoft Teams** – Team communication and collaboration
-
-## Repository Structure
-
-```text
-Data_Science_Practice_Grp10/
-│
-├── README.md
-├── docs/
-│   ├── assessment-reports/
-│   ├── architecture/
-│   ├── workflow/
-│   └── planning/
-│
-├── data/
-│   ├── raw/
-│   ├── processed/
-│   └── model-ready/
-│
+```
+project/
 ├── notebooks/
-├── src/
-│   ├── data_acquisition/
-│   ├── preprocessing/
-│   ├── feature_engineering/
-│   └── modelling/
-├── dashboard/
-└── results/
+│   └── main.ipynb
+├── data/
+│   ├── raw/            # original files, untouched
+│   ├── processed/      # cleaned individual files
+│   ├── model_ready/     # final merged table used for modelling
+│   └── output/          # predictions, saved models, metrics
 ```
 
-## Current Project Status
+The notebook expects to be run from a `notebooks/` folder, with `data/` as a sibling folder
+(`PROJECT_DIR = Path("..")`). All output folders are created automatically if they don't exist.
 
-**Assessment 1 – Project Proposal and Design: Completed**
+## Input Data
 
-Initial work includes:
+Place these four files in `data/raw/` before running:
 
-- Project scope and objectives
-- Theme justification
-- Problem definition
-- Initial system architecture
-- Component interaction design
-- Workflow and data pipeline design
-- Data and analytics approach
-- Team task allocation and RACI matrix
-- Initial risk analysis
-- Ethics, privacy, and security considerations
+| File | Description |
+|---|---|
+| `properties.csv` | Property sales records (price, beds, baths, location, sale date, etc.) |
+| `ERP.csv` | ABS Estimated Resident Population for Greater Darwin, one row per year |
+| `Annual_Household_NT.csv` | Northern Territory annual household income, one row per year |
+| `cash_rates.csv` | RBA cash rate target history, one row per rate change |
 
-The repository will continue to be updated as data acquisition, preprocessing, modelling, evaluation, and dashboard development progress.
+## What the Notebook Does
 
-## Ethics, Privacy and Security
+1. **Load** the four raw files.
+2. **Explore (EDA)** each one to find data quality issues — missing values, bad formatting,
+   inconsistent columns, etc.
+3. **Clean** each dataset based on what the EDA found.
+4. **Re-run EDA** to confirm the cleaning worked.
+5. **Engineer features** — distance from Darwin CBD, sale year/month, property type, etc.
+6. **Merge** everything into one table.
+7. **Split into train/test by time** (not randomly), since this is a forecasting problem.
+8. **Fill in missing values** using training-set statistics only, to avoid data leakage.
+9. **Train and compare models**, then dig into where and why predictions go wrong.
+10. **Export** predictions, evaluation metrics, and saved model files to `data/output/`.
 
-The project primarily uses publicly available and statistical data. Unnecessary personal information will not be stored.
+A running list of data-quality findings ("saw this → did this about it") is logged throughout
+the notebook and printed in full near the end, as a simple audit trail.
 
-Key considerations include:
+## Requirements
 
-- Data privacy
-- Model bias
-- Differences in data availability between suburbs
-- Responsible interpretation of forecasts
-- Protection of API credentials and sensitive configuration information
+Install with:
 
-API credentials and other secrets must **not** be committed to the public GitHub repository.
+```bash
+pip install -r requirements.txt
+```
 
-## Disclaimer
+## Running
 
-This system is intended as a **decision-support and analytical tool**. Predictions generated by the models do not guarantee future property prices or housing market conditions.
+Open `main.ipynb` in Jupyter and run all cells from top to bottom
