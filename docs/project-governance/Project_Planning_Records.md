@@ -4,7 +4,7 @@ This register identifies the records used to demonstrate project planning, monit
 
 | Record | Evidence used | Purpose | Update responsibility |
 |---|---|---|---|
-| Current Jira task snapshot | `Jira Project Reports.csv` | Provides a concise list of 37 issues, assignees, sprints and current statuses | Lisa Vong |
+| Current Jira task snapshot | `Jira_Task_Status_Snapshot.csv` | Provides a concise list of 37 issues, assignees, sprints and current statuses | Lisa Vong |
 | Full Jira project export | `Jira_Project_Reports.csv` | Provides detailed Jira evidence including issue keys, dates, assignees, resolution and sprint information | Lisa Vong |
 | Sprint plan | `Planning.md` | Summarises the six sprints, deliverables, dependencies and completion criteria | Lisa Vong |
 | Task allocation | `Task_Allocation.md` | Summarises responsibilities and current workload by team member | Lisa Vong and all task owners |
