@@ -11,6 +11,7 @@ income, and RBA cash rate data.
 project/
 ├── notebooks/
 │   └── main.ipynb
+│   └── plots.ipynb (just for plots)
 ├── data/
 │   ├── raw/            # original files, untouched
 │   ├── processed/      # cleaned individual files
