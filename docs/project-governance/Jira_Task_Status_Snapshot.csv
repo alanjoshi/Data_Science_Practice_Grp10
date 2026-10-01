@@ -1,0 +1,38 @@
+Issue Type,Key,Summary,Status,Assignee,Sprint
+Task,PDSPDT-1,"Form the team, create the GitHub repository, set up the Jira project, finalize the project topic, and assign team roles",Done,Lisa Vong,Sprint 1 - Project Planning
+Task,PDSPDT-2,"Investigate the problem domain, define the project objectives, and develop the problem statement",Done,Lisa Vong,Sprint 1 - Project Planning
+Task,PDSPDT-3,"Break down tasks, develop the project timeline, and prepare the risk register",Done,Lisa Vong,Sprint 1 - Project Planning
+Task,PDSPDT-4,"Identify potential datasets, evaluate data quality, and select the most suitable data sources",Done,Alan Joshi John,Sprint 2 - Research & Design
+Task,PDSPDT-5,Initial idea on designing the database/data storage and creating the component diagram,Done,Roshan Neupane,Sprint 2 - Research & Design
+Task,PDSPDT-6,"Design data pipeline, and workflow",Done,Roshan Neupane,Sprint 2 - Research & Design
+Task,PDSPDT-7,"Review the overall project plan, update Jira tasks, and synchronize the GitHub repository",Done,Lisa Vong,Sprint 2 - Research & Design
+Task,PDSPDT-8,"Identify ethics, privacy, security issues and prepare risk register",Done,Aashish Sharma,Sprint 2 - Research & Design
+Task,PDSPDT-9,"Write Project Overview Objectives, Theme Justification and Problem Statemen",Done,Bipana Tripathee,Sprint 3 - Report Completion
+Task,PDSPDT-10,Complete System Architecture,Done,Bipana Tripathee,Sprint 3 - Report Completion
+Task,PDSPDT-11,"Complete Workflow Diagram, Data Pipeline, Database Concept.",Done,Alan Joshi John,Sprint 3 - Report Completion
+Task,PDSPDT-12,"Write Data Acquisition, Data Storage, Data Processing, Analytics/Machine Learning.",Done,Alan Joshi John,Sprint 3 - Report Completion
+Task,PDSPDT-13,"Write Data Visualisation, Risk Analysis, Ethics, Privacy & Security.",Done,Aashish Sharma,Sprint 3 - Report Completion
+Task,PDSPDT-14,"Peer review, update GitHub evidence",Done,Lisa Vong,Sprint 3 - Report Completion
+Task,PDSPDT-15,"Submit Assessment 1,Proofread, format report, verify references, export PDF",Done,Aashish Sharma,Sprint 3 - Report Completion
+Task,PDSPDT-16,Update Jira to Done,Done,Lisa Vong,Sprint 3 - Report Completion
+Task,PDSPDT-17,"Update System Architecture, Review Implementation Progress",Done,Bipana Tripathee,Sprint 4 - Technical Setup
+Task,PDSPDT-18,"Update Data Acquisition, Data Storage Structure, Data Pipeline, Data Pipeline",Done,Alan Joshi John,Sprint 4 - Technical Setup
+Task,PDSPDT-19,Update Jira Board & Task Allocation,Done,Lisa Vong,Sprint 4 - Technical Setup
+Task,PDSPDT-20,Update Risk Register,Done,Aashish Sharma,Sprint 4 - Technical Setup
+Task,PDSPDT-21,"Implement Data Cleaning, Handle Missing / Invalid Data, Develop Baseline Regression Model, Develop / Compare ML Models",Done,Roshan Neupane,Sprint 5 - Data Processing
+Task,PDSPDT-22,Test Data Pipeline,Done,Alan Joshi John,Sprint 5 - Data Processing
+Task,PDSPDT-23,Update Implementation Evidence,Done,Bipana Tripathee,Sprint 5 - Data Processing
+Task,PDSPDT-24,"Review Ethics & Privacy, Review Data Security",Done,Aashish Sharma,Sprint 5 - Data Processing
+Task,PDSPDT-25,Evaluate Model Performance,In Review,Roshan Neupane,Sprint 6 - Evaluation
+Task,PDSPDT-26,Finalise Implementation Progress,Done,Bipana Tripathee,Sprint 6 - Evaluation
+Task,PDSPDT-27,"Finalise Workflow, GitHub Repository Organisation,",To Do,Alan Joshi John,Sprint 6 - Evaluation
+Task,PDSPDT-28,"Develop Dashboard / Visualisations, Finalise Risk Analysis, Finalise Ethics, Privacy & Security",In Progress,Roshan Neupane,Sprint 6 - Evaluation
+Task,PDSPDT-29,"Evaluate Overall Project Progress, Update Project Governance, Check Jira Evidence",Done,Lisa Vong,Sprint 6 - Evaluation
+Task,PDSPDT-30,"Write Changes Since Assessment 1, Complete Contribution Summary, Individual Contribution Page, Technical Content Review, Final Submission Readiness Check",Done,Lisa Vong,Sprint 6 - Report Integration
+Task,PDSPDT-31,"Write Changes Since Assessment 1, Complete Contribution Summary, Individual Contribution Page, Technical Content Review, Final Submission Readiness Check",In Progress,Roshan Neupane,Sprint 6 - Report Integration
+Task,PDSPDT-32,"Write Changes Since Assessment 1, Complete Contribution Summary, Individual Contribution Page, Technical Content Review, Final Submission Readiness Check",In Progress,Aashish Sharma,Sprint 6 - Report Integration
+Task,PDSPDT-33,"Write Changes Since Assessment 1, Complete Contribution Summary, Individual Contribution Page, Technical Content Review, Final Submission Readiness Check",Done,Bipana Tripathee,Sprint 6 - Report Integration
+Task,PDSPDT-34,"Write Changes Since Assessment 1, Complete Contribution Summary, Individual Contribution Page, Technical Content Review, Final Submission Readiness Check",To Do,Alan Joshi John,Sprint 6 - Report Integration
+Task,PDSPDT-35,"Final Report Integration, Formatting & Consistency Check,",In Progress,Roshan Neupane,Sprint 6 - Report Integration
+Task,PDSPDT-36,GitHub Link Check,To Do,Alan Joshi John,Sprint 6 - Report Integration
+Task,PDSPDT-37,Jira Link Check,Done,Lisa Vong,Sprint 6 - Report Integration

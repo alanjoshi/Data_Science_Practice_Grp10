@@ -1,0 +1,76 @@
+<mxfile host="app.diagrams.net" agent="Codex">
+  <diagram id="updated-data-pipeline" name="Updated Data Pipeline">
+    <mxGraphModel dx="1942" dy="1083" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=32;fontStyle=1;fontColor=#15324A;" value="Updated Data Pipeline Diagram" vertex="1">
+          <mxGeometry height="50" width="720" x="60" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="source_property" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#2F74C0;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="Property Sales Data&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Homely scraped/sold property records, sale price, suburb, bedrooms, bathrooms, land/building area, sale date&lt;/font&gt;" vertex="1">
+          <mxGeometry height="115" width="310" x="60" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="source_abs" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#2A9D8F;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="ABS + Government Context Data&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;ABS Census suburb indicators, ABS ERP population, ABS State Accounts per-capita income, NT housing pressure&lt;/font&gt;" vertex="1">
+          <mxGeometry height="125" width="310" x="60" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="source_rates" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#E89B3C;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="Market Condition Data&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;RBA cash-rate / interest-rate context used to represent changing housing-market conditions&lt;/font&gt;" vertex="1">
+          <mxGeometry height="115" width="310" x="60" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="raw" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#59636E;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="Raw Data Storage&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Original files are stored in data/raw or repository evidence folders before any transformation.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="125" width="300" x="470" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="cleaning" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#2F74C0;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="Cleaning + Standardisation&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Remove duplicates, validate sale prices, handle missing values, standardise suburb/date/price fields and inspect outliers.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="135" width="330" x="860" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="alignment" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#E89B3C;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="Temporal + Geographic Alignment&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Match suburb names carefully and align yearly market variables with property sale dates to reduce mismatch and future leakage.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="135" width="330" x="860" y="395" as="geometry" />
+        </mxCell>
+        <mxCell id="features" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#5AA469;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="Feature Engineering&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Distance from CBD, property type encoding, sale year/month, suburb indicators, population context, income context and interest-rate context.&lt;br&gt;&lt;br&gt;&lt;b&gt;Leakage check:&lt;/b&gt; target-derived features such as price_per_sqm are not used as predictors unless handled safely.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="205" width="360" x="1270" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="model_ready" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#5AA469;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="Model-ready Dataset&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Final merged dataset prepared for model training, with preprocessing fitted only after the train/test split.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="125" width="330" x="470" y="725" as="geometry" />
+        </mxCell>
+        <mxCell id="split" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#7A5CCF;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="Time-respecting Split&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Training uses earlier property records and testing uses later records, because the project is closer to forecasting than random past prediction.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="125" width="330" x="890" y="725" as="geometry" />
+        </mxCell>
+        <mxCell id="models" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#D05C4B;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="Model Training + Evaluation&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Linear Regression, Random Forest and XGBoost are compared using MAE, RMSE, MAPE and R² together.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="125" width="330" x="1310" y="725" as="geometry" />
+        </mxCell>
+        <mxCell id="outputs" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#15324A;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="Outputs&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Predicted prices, evaluation metrics, feature importance, uncertainty notes, affordability indicators and dashboard-ready output tables.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="130" width="450" x="860" y="990" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="source_property" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;" target="raw" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="source_abs" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;" target="raw" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="source_rates" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;" target="raw" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="raw" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;" target="cleaning" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="cleaning" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;" target="alignment" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="alignment" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;" target="features" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="features" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;" target="model_ready" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="model_ready" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;" target="split" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="split" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;" target="models" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="models" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;" target="outputs" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

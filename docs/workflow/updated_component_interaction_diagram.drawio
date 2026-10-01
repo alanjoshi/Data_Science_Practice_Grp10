@@ -1,0 +1,76 @@
+<mxfile host="app.diagrams.net" agent="Codex">
+  <diagram id="updated-component-interaction" name="Updated Component Interaction">
+    <mxGraphModel dx="3742" dy="1083" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=32;fontStyle=1;fontColor=#15324A;" value="Updated Component Interaction Diagram" vertex="1">
+          <mxGeometry height="50" width="850" x="-120" y="37" as="geometry" />
+        </mxCell>
+        <mxCell id="user" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#15324A;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;gradientColor=none;" value="End User / Decision Maker&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Views suburb comparison, predicted price, affordability indicators and explanation notes.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="130" width="290" x="-120" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="dashboard" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#2F74C0;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="Dashboard / Data Intuition Interface&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Interactive output layer for predictions, affordability context, charts and model explanations.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="145" width="330" x="480" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="api" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#2A9D8F;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="Application / Query Layer&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Receives suburb/property inputs, sends requests to the trained model and returns dashboard-ready outputs.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="145" width="330" x="930" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="model" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#7A5CCF;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="Trained Prediction Model&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Selected regression model such as Random Forest or XGBoost. Produces property-price estimates from prepared features.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="145" width="330" x="1360" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="preprocess" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#5AA469;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="Preprocessing + Feature Engineering&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Standardises fields, encodes categorical values, joins market context and prepares model-ready inputs without test-set leakage.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="145" width="360" x="930" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="data" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#E89B3C;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="Cleaned Property + Market Dataset&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Merged data containing property records, suburb-level Census features, population context, per-capita income, RBA rate context and housing-pressure indicators.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="160" width="360" x="480" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="sources" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#59636E;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="Raw Data Sources&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Homely, ABS Census, ABS State Accounts, ABS ERP population, RBA interest rates and NT housing-pressure data.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="145" width="300" x="-90" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="explain" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#D05C4B;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="Explainability + Uncertainty Module&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Uses feature importance and prediction-error information to explain what is driving estimates and where uncertainty remains.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="150" width="360" x="930" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="metrics" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#D05C4B;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="Evaluation Evidence Store&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Stores MAE, RMSE, MAPE, R², feature-importance results and residual/error notes for report evidence.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="145" width="330" x="1360" y="715" as="geometry" />
+        </mxCell>
+        <mxCell id="github" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#15324A;fontSize=17;fontStyle=1;fontColor=#15324A;spacing=12;align=left;verticalAlign=top;" value="GitHub Repository&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Stores code, datasets, diagrams, documentation and evidence for version control and team collaboration.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="135" width="330" x="50" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="user" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;fontColor=#59636E;" target="dashboard" value="uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="dashboard" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;fontColor=#59636E;" target="api" value="requests prediction">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="api" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;fontColor=#59636E;" target="model" value="calls model">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="sources" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;fontColor=#59636E;" target="data" value="collects">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="data" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;fontColor=#59636E;" target="preprocess" value="feeds features">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="preprocess" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;fontColor=#59636E;" target="model" value="trains / transforms inputs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="model" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;fontColor=#59636E;" target="explain" value="prediction + drivers">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="explain" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;fontColor=#59636E;" target="dashboard" value="returns explanation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="model" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;fontColor=#59636E;" target="metrics" value="stores evidence">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="data" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;fontColor=#59636E;" target="github" value="version control">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="github" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#9FB0BF;fontColor=#59636E;" target="dashboard" value="documentation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
