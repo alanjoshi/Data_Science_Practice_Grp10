@@ -1,4 +1,6 @@
-appnope==1.0.0
+# Notebook runtime snapshot, verified with Python 3.12 on macOS arm64.
+# Keep these pins when regenerating the reported model artifacts.
+appnope==1.0.0; sys_platform == "darwin"
 asttokens==3.0.2
 cloudpickle==3.1.2
 comm==0.2.3
@@ -45,3 +47,9 @@ traitlets==5.16.1
 typing_extensions==4.16.0
 wcwidth==0.8.3
 xgboost==3.4.1
+
+# Notebook UI and automated execution tools
+jupyterlab==4.4.3
+nbclient==0.10.2
+nbformat==5.10.4
+nbconvert==7.16.6
