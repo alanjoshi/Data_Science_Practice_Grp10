@@ -3,48 +3,48 @@
 **Bipana Tripathee** (S388875)
 *System Architecture Lead*
 
-Greater Darwin Property-Price Forecasting System — Group Dan1-Theme2
+Greater Darwin Property-Price Forecasting System - Group Dan1-Theme2
 
-## Purpose
+## Purpose and verification scope
 
-This document describes the current eight-stage pipeline architecture. It was redesigned following Assessment 2 feedback indicating that the original workflow diagram lacked clarity, and is intended to serve as the authoritative reference for how data moves through the system, from acquisition through to the buyer-facing dashboard.
+This document describes the current notebook pipeline and intended dashboard integration. It is aligned with `code/main.ipynb` at commit `46e142f88e0e850c08be687425c209f27b415fd2`. Figures below are saved notebook outputs, not an independently reproduced training run. The notebook contains a stale-output warning that must be reconciled by a clean run before claiming full reproducibility.
 
-## The Eight Stages
+## The eight stages
 
-| # | Stage | Description | Output |
-|---|---|---|---|
-| 1 | **Sources** | Homely property sales, ABS Estimated Resident Population, ABS Household Income (NT-wide, 1990–2025), RBA cash rate, Darwin CPI | Five raw datasets |
-| 2 | **Clean & merge** | Each dataset cleaned individually, then merged by year (or by sale date for the cash rate) | One merged, raw-clean table |
-| 3 | **Train-only preparation** | Gap-filling, rare-suburb grouping, and suburb encoding — all fitted on training rows only, so nothing leaks from the future | Leak-safe prepared table |
-| 4 | **Feature engineering** | Price momentum, interest-rate direction, and recency weighting added on top of the cleaned base features | Model-ready feature set |
-| 5 | **Model training** | Linear Regression, Random Forest, and XGBoost trained and tuned with time-aware cross-validation | Three candidate models |
-| 6 | **Backtest** | Twelve quarterly forecasts, each one using only sales that happened before that quarter | Backtest error per model |
-| 7 | **Final model** | XGBoost, refit on all 8,296 cleaned sales after being selected by the backtest | Saved model bundle |
-| 8 | **Dashboard** | Turns the saved model into a price estimate, an 80% range, repayments, rate sensitivity, and suburb comparison | Buyer-facing prediction |
+| # | Stage | Description |
+|---|---|---|
+| 1 | **Sources** | Homely sales; ABS population; NT-wide household income; RBA cash rate; Darwin CPI |
+| 2 | **Clean and merge** | Coordinate and outlier filters; annual income/population lagged one year; cash rate matched by date |
+| 3 | **Split preparation** | Imputation, suburb grouping and encoding refitted per split; upstream outlier thresholds reused |
+| 4 | **Feature engineering** | Price momentum, rate direction and policy flags; final training sample weighting disabled |
+| 5 | **Model comparison** | Linear Regression, Random Forest and XGBoost; time-aware tuning and feature comparisons |
+| 6 | **Backtest** | 12 quarterly forecasts in 2023-2025; report upstream filtering and selection limitations |
+| 7 | **Final model** | XGBoost + policy; saved output: 8,209 sales through December 2025; export model and metadata |
+| 8 | **Dashboard integration** | Intended: price range, repayments, rate sensitivity and suburb comparison; deployment unverified |
 
-## Design Rationale: Re-runnable Pipeline
+## Data timing and cleaning
 
-The shared prepare-split function is structured so that every learned step (imputation, suburb encoding, rare-category grouping) is **re-fitted on training rows only**, every time the pipeline runs — not fitted once and reused. This is what makes it possible to:
+The five raw inputs are properties.csv, ERP.csv, annual_household_nt.csv, cash_rates.csv and cpi_index.csv under data/raw/. Household income is an NT-wide annual series (1990-2025), not suburb-level income. Annual population and income use a one-year lag; publication-date availability still requires validation. The saved cleaning output reports zero coordinate sign repairs and 209 exclusions outside the configured Greater Darwin bounding box. This is a scope filter, not proof that all excluded coordinates were wrong. The final cleaned dataset contains 8,209 sales.
 
-- Re-run the whole pipeline at a different cutoff date without hand-editing anything
-- Test the 4-cutoff robustness checks used in the modelling section
-- Run the 12-quarter rolling-origin backtest, where each fold needs its own clean train/test split
+## Split preparation and leakage limitations
 
-## Dashboard Design
+prepare_split() refits imputation, land-area imputation, rare-suburb grouping and suburb encoding on each training split. However, price and land-area IQR thresholds are fitted upstream once using sales through 12 November 2024 and applied before rolling evaluation. Earlier backtests therefore reuse filtering information from later sales. Do not describe the whole pipeline as leakage-free. A future correction should fit these thresholds within each evaluation fold. The saved output also excludes 10% of test-period sales using the price/land filters, so reported errors describe a restricted population.
 
-The dashboard was designed around a single buyer journey, split into five screens:
+## Selected model and evaluation
 
-1. **Choose a property** — suburb, type, beds, baths, cars, land area
-2. **Price and range** — the model's estimate plus the measured 80% range
-3. **Repayments** — deposit, loan, weekly/monthly repayment, repayment-to-income
-4. **Rate sensitivity** — test different lender margins against the 30% stress line
-5. **Suburb comparison** — same property and income, compared across every suburb
+The saved final-model output selects XGBoost with policy features, using 28 numeric and 3 categorical inputs, refitted on 8,209 sales through 31 December 2025. USE_RECENCY_WEIGHTS is False: model-fitting sample weights are disabled for final tuning, backtesting and refitting. Recency weighting was evaluated and its saved comparison raises pooled RMSE by 1.10%, helping 2 of 12 folds. Recency-weighted suburb encoding remains a separate mechanism. The 12-quarter backtest reports RMSE AUD 79,122.65, MAE AUD 57,114.42, MAPE 11.92% and R2 0.7993. Policy comparisons are predictive, not causal.
 
-Underneath these, the dashboard has five tabs: Overview, Model performance, Diagnosis to Fix, Predict and Affordability, and Limitations.
+## Repository and generated artifacts
 
-## Known Limitation
+The reviewed branch contains code/main.ipynb, five data/raw/ CSV inputs, requirements.txt, README.md and documentation. It does not contain code/app.py or code/plots.ipynb. The notebook includes export code for the model bundle, metadata, metrics, predictions, dashboard reference and model card; generated outputs are not tracked on this branch. Export code alone does not establish that a deployment uses the current bundle.
 
-The dashboard's market context (most recent sale, interest rate, CPI) is **frozen at the last training sale date (December 2025)** rather than updating in real time. This constraint is disclosed directly on screen rather than concealed, and is recorded as priority item five in the Assessment 4 work plan (retrain on new sales and refresh market context).
+## Dashboard integration and verification
+
+The intended buyer journey covers property selection, a price estimate and nominal 80% interval, repayments, lender-rate sensitivity and suburb comparison. The proposed five tabs are Overview, Model performance, Diagnosis to Fix, Predict and Affordability, and Limitations. The previously documented deployment URL is https://data-science-practice.streamlit.app/; its current availability, source branch and model version have not been verified for this revision. Obtain the dashboard source and deployment commit from its owner before claiming that it uses the current model. The notebook exports context through December 2025; whether the live interface uses and discloses that context remains unverified. Repayment calculations are intended to exclude stamp duty, insurance and fees.
+
+## Remaining work
+
+Perform and record a clean notebook run; resolve stale narrative/output warnings; refit outlier rules within each backtest; validate annual-series publication timing; and verify dashboard source, deployment commit, exported model compatibility and displayed limitations. No live refresh or scheduled retraining is verified. Branch protection and mandatory review settings are not established by this documentation.
 
 ---
-*Last updated: October 2026*
+Last updated: 18 October 2026.
