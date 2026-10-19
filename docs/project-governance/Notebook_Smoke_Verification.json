@@ -1,0 +1,77 @@
+{
+  "mode": "smoke",
+  "started_utc": "2026-10-18T11:06:34.279380+00:00",
+  "source_commit": "46e142f88e0e850c08be687425c209f27b415fd2",
+  "python": "3.12.14",
+  "platform": "macOS-26.5-arm64-arm-64bit",
+  "notebook_sha256": "27de1a1cbe5a5fd0d2787eb9f4d6edd1388993763553380bbdc9e900caa020c1",
+  "input_sha256": {
+    "properties.csv": "0c4f25577c9ca9b220f82cc23601ccc3f9ca2889bebe8e6e7a4507331a898278",
+    "ERP.csv": "8c6e99c7bf02cfe399a5ce1fa550671409f3aed4d69b01d22783d0e452a1f7bf",
+    "annual_household_nt.csv": "fd359c2e1e65d032a58777e7e6c774a5f7d085ecdc152e90e4baaf7ff8c4d9a9",
+    "cash_rates.csv": "3c70a862bca29cd957cbaeac8d0f377af7f83201ead84c4e8a6ab143957fc2af",
+    "cpi_index.csv": "1e20eb0626d1486c6913c9cd4dd067bd01789a23199727afec5e4048fd776df3"
+  },
+  "packages": {
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.0",
+    "xgboost": "3.4.1",
+    "matplotlib": "3.11.1",
+    "seaborn": "0.13.2",
+    "joblib": "1.6.0",
+    "ipykernel": "7.3.0",
+    "nbclient": "0.10.2",
+    "nbformat": "5.10.4",
+    "jupyterlab": "4.4.3"
+  },
+  "scope": "Data preparation and CSV validation; three small untuned model/serialization checks. Not a reproduction of tuned metrics, backtests or final model selection.",
+  "checks": {
+    "raw_property_rows": 15423,
+    "clean_property_rows": 8209,
+    "merged_rows": 8209,
+    "model_ready_rows": 8209,
+    "train_rows": 6541,
+    "test_rows": 1668,
+    "coordinate_sign_repairs": 0,
+    "coordinate_exclusions": 209,
+    "annual_macro_lag_years": 1,
+    "cpi_lag_quarters": 1,
+    "cutoff": "2024-11-12 00:00:00+00:00",
+    "duplicate_model_property_ids": 0,
+    "required_numeric_missing_after_preparation": 0,
+    "join_coverage_pct": {
+      "erp_population": 100.0,
+      "total_gross_income": 100.0,
+      "cash_rate_target": 100.0,
+      "cpi_index": 100.0,
+      "cpi_annual_change_pct": 100.0
+    },
+    "exports_without_address_column": [
+      "data/processed/properties_clean.csv",
+      "data/processed/annual_household_clean.csv",
+      "data/processed/erp_clean.csv",
+      "data/processed/cash_rate_clean.csv",
+      "data/processed/cpi_clean.csv",
+      "data/processed/merged_raw.csv",
+      "data/model_ready/model_ready.csv"
+    ],
+    "smoke_models": {
+      "Linear Regression": {
+        "prediction_rows": 100,
+        "serialization_roundtrip": true
+      },
+      "Random Forest": {
+        "prediction_rows": 100,
+        "serialization_roundtrip": true
+      },
+      "XGBoost": {
+        "prediction_rows": 100,
+        "serialization_roundtrip": true
+      }
+    }
+  },
+  "status": "passed",
+  "elapsed_seconds": 68.49
+}
